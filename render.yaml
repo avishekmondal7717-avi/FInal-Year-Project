@@ -1,0 +1,29 @@
+# Render service configuration (example/template).
+# Update `repo` and `branch` fields as needed before use.
+
+services:
+  - type: static_site
+    name: stu-att-sys-frontend
+    repo: https://github.com/your-org/your-repo
+    branch: main
+    buildCommand: npm ci && npm run build
+    publishPath: stu-att-sys-main/frontend/dist
+    root: stu-att-sys-main/frontend
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://final-year-project-avi.onrender.com/api
+
+  - type: web_service
+    name: stu-att-sys-backend
+    repo: https://github.com/your-org/your-repo
+    branch: main
+    env: python
+    buildCommand: pip install -r stu-att-sys-main/backend/requirements.txt
+    startCommand: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
+    plan: free
+    # Env vars should be set on Render dashboard (do NOT commit secrets)
+    envVars:
+      - key: DATABASE_URL
+      - key: JWT_SECRET
+      - key: R2_ACCESS_KEY_ID
+      - key: R2_SECRET_ACCESS_KEY
