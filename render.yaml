@@ -6,7 +6,7 @@ services:
     name: stu-att-sys-frontend
     repo: https://github.com/your-org/your-repo
     branch: main
-    buildCommand: npm ci && npm run build
+    buildCommand: npm ci --legacy-peer-deps && npm run build
     publishPath: stu-att-sys-main/frontend/dist
     root: stu-att-sys-main/frontend
     envVars:
