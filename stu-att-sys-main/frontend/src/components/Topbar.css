@@ -1,0 +1,266 @@
+.topbar {
+  height: 64px;
+  background: var(--bg-topbar, #fff);
+  border-bottom: 1px solid var(--border-color, #e8eaf0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.topbar-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary, #444);
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.topbar-menu-btn:hover {
+  background: var(--bg-hover, #f0f2f8);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notif-btn, .topbar-theme-toggle-btn {
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: var(--text-secondary, #555);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.notif-btn:hover, .topbar-theme-toggle-btn:hover {
+  background: var(--bg-hover, #f0f2f8);
+  border-color: var(--border-color, #e8eaf0);
+  color: var(--text-primary, #000);
+}
+
+.notif-btn:focus-visible,
+.topbar-theme-toggle-btn:focus-visible,
+.topbar-menu-btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.notif-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.15s;
+  color: var(--text-primary, #2d3748);
+}
+
+.admin-profile:hover {
+  background: var(--bg-hover, #f0f2f8);
+}
+
+.admin-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.admin-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary, #2d3748);
+}
+
+/* Dark theme overrides for topbar icons and profile arrow */
+.dark .admin-profile {
+  color: var(--text-primary);
+}
+.dark .admin-profile svg {
+  stroke: var(--text-primary);
+}
+.dark .topbar-menu-btn svg,
+.dark .notif-btn svg,
+.dark .topbar-theme-toggle-btn svg {
+  stroke: var(--text-primary);
+}
+
+.dark .notif-btn,
+.dark .topbar-theme-toggle-btn {
+  color: var(--text-primary);
+}
+
+.dark .notif-btn:hover,
+.dark .topbar-theme-toggle-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-color);
+}
+
+/* Notification Dropdown Styles */
+.notif-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 320px;
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, #e8eaf0);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  overflow: hidden;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.notif-dropdown-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color, #e8eaf0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notif-dropdown-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary, #1a202c);
+}
+
+.notif-count-badge {
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.notif-dropdown-body {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.notif-empty-state {
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--text-secondary, #718096);
+  font-size: 13px;
+}
+
+.notif-item {
+  padding: 12px 18px;
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--border-color, #f7fafc);
+}
+
+.notif-item:last-child {
+  border-bottom: none;
+}
+
+.notif-item:hover {
+  background: var(--bg-hover, #f7fafc);
+}
+
+.notif-item-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notif-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.notif-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #2d3748);
+}
+
+.notif-item-desc {
+  font-size: 11px;
+  color: var(--text-secondary, #718096);
+  line-height: 1.3;
+}
+
+/* Dark mode support */
+.dark .notif-dropdown {
+  background: #18181b;
+  border-color: #27272a;
+}
+.dark .notif-dropdown-header {
+  border-bottom-color: #27272a;
+}
+.dark .notif-dropdown-header h3 {
+  color: #f4f4f5;
+}
+.dark .notif-count-badge {
+  background: #1e1b4b;
+  color: #818cf8;
+}
+.dark .notif-item {
+  border-bottom-color: #27272a;
+}
+.dark .notif-item:hover {
+  background: #27272a;
+}
+.dark .notif-item-title {
+  color: #f4f4f5;
+}
+.dark .notif-item-desc {
+  color: #a1a1aa;
+}
+.dark .notif-empty-state {
+  color: #a1a1aa;
+}
+
+@media (max-width: 640px) {
+  .topbar { padding: 0 14px; }
+  .topbar-right { gap: 6px; }
+  .admin-name { display: none; }
+  .admin-profile { padding: 4px; }
+  .notif-dropdown { width: min(320px, calc(100vw - 28px)); right: -44px; }
+}
