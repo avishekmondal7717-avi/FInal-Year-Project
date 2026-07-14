@@ -1,0 +1,188 @@
+/* ==========================================================================
+   PREMIUM GLASSMORPHISM DESIGN SYSTEM - REGISTRATION PAGE
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+
+.register-container {
+  display: flex;
+  height: 100vh;
+  font-family: var(--app-font);
+  background: var(--auth-bg);
+  color: var(--auth-text);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow */
+.register-container::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, var(--auth-glow-color) 0%, rgba(99, 102, 241, 0) 70%);
+  bottom: -200px;
+  right: -100px;
+}
+
+/* ================= LEFT ================= */
+.register-left {
+  width: 42%;
+  background: var(--auth-left-bg);
+  border-right: 1px solid var(--auth-card-border);
+  display: flex;
+  flex-direction: column;
+  padding: 60px 48px;
+}
+
+/* Brand */
+.register-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.register-brand-title{
+   font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #5670f5 30%, #251aea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.register-brand-icon {
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.05);
+}
+
+/* ================= FEATURES ================= */
+.register-features {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Card */
+.register-feature-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  transition: 0.2s ease;
+}
+
+.register-feature-item:hover {
+  background: rgba(255,255,255,0.04);
+  transform: translateX(4px);
+}
+
+/* Icon */
+.register-feature-icon {
+  width: 55px;
+  height: 55px;
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(81, 84, 242, 0.12);
+  color: #868fe3;
+}
+
+/* Text */
+.register-feature-item h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.register-feature-item p {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  opacity: 0.75;
+  line-height: 1.4;
+}
+
+/* MAIN HEADER BLOCK */
+.register-main {
+  padding: 18px;
+  background: rgba(99,102,241,0.08);
+  border-radius: 16px;
+  margin-bottom: 8px;
+}
+
+/* ================= RIGHT ================= */
+.register-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+/* FORM CARD */
+.register-form-card {
+  width: 100%;
+  max-width: 620px;
+  background: var(--auth-card-bg);
+  border: 1px solid var(--auth-card-border);
+  border-radius: 20px;
+  padding: 42px;
+  backdrop-filter: blur(24px);
+}
+
+/* FORM */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.register-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* INPUTS */
+.register-field input,
+.register-field select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--auth-input-border);
+  background: var(--auth-input-bg);
+  color: var(--auth-text);
+}
+
+/* BUTTON */
+.register-submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#6366f1,#4f46e5);
+  color: white;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .register-left {
+    display: none;
+  }
+
+  .register-right {
+    padding: 20px;
+  }
+
+  .register-row {
+    grid-template-columns: 1fr;
+  }
+}
