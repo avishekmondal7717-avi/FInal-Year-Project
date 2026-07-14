@@ -1,0 +1,27 @@
+# Root .gitignore for repository
+
+# Node / frontend
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.db
+.pytest_cache/
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large data / model files usually not committed
+data/
+*/data/*.onnx
