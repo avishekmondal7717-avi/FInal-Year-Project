@@ -104,3 +104,28 @@ python -m py_compile main.py database.py storage.py
   an administrator.
 - Attendance is unique per student and classroom session, allowing multiple
   subjects on the same day without overwriting records.
+
+## Render deployment notes
+
+- Frontend service (Static Site) settings on Render:
+  - Type: Static Site
+  - Root Directory: stu-att-sys-main/frontend
+  - Build Command: `npm ci && npm run build`
+  - Publish Directory: `dist`
+  - Set `VITE_API_BASE_URL` in Render Environment Variables to your backend URL, for example `https://your-backend.onrender.com/api`.
+
+- Backend deployment and secrets:
+  - Do NOT commit `.env` or secrets. Rotate/revoke any values accidentally committed immediately.
+  - Use Render Environment Variables for `DATABASE_URL`, `JWT_SECRET`, and Cloudflare R2 keys.
+  - If the repository previously used a git submodule for `backend/`, either add a proper `.gitmodules` entry or convert `backend/` to a normal directory in the repo. Render cannot fetch a submodule if `.gitmodules` is missing.
+
+- Files added to assist:
+  - `.env.example` (root) and `backend/.env.example` — templates for required env keys.
+  - `render.yaml` — a template showing recommended frontend and backend services.
+
+- Recommended cleanup steps (run locally and push):
+  1. Rotate and revoke exposed credentials now (database, R2, JWT, etc.).
+  2. Add `.env` to `.gitignore` (already added at repository root).
+  3. Remove the committed `.env` and `__pycache__` from history (use `git rm --cached .env`, then commit; for full history removal use `git filter-repo` or BFG and force-push).
+  4. If `backend/` is a submodule pointer, either add `.gitmodules` with the correct URL or import the backend into the repo so Render can deploy it.
+
